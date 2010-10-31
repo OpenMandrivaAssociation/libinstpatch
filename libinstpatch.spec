@@ -103,5 +103,10 @@ Header files needed to build applications against libinstpatch.
 rm -rf %{buildroot}
 %makeinstall_std
 
+%ifarch x86_64
+install -d %{buildroot}%{python_sitelib}
+mv %{buildroot}%{_prefix}/%_lib/python%{python_version}/site-packages/* %{buildroot}%{python_sitelib}/ 
+%endif
+
 %clean
 rm -rf %{buildroot}
