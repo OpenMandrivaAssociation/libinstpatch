@@ -16,6 +16,7 @@ License:        LGPL
 Group:          System/Libraries
 
 BuildRequires:  glib2-devel
+BuildRequires:  intltool
 BuildRequires:  python-gobject-devel
 BuildRequires:  python-devel
 BuildRequires:  sndfile-devel
