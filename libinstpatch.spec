@@ -15,6 +15,7 @@ Source0:        http://prdownloads.sourceforge.net/swami/%{name}-%{version}.tar.
 License:        LGPL
 Group:          System/Libraries
 
+BuildRequires:  glib2-devel
 BuildRequires:  python-gobject-devel
 BuildRequires:  python-devel
 BuildRequires:  sndfile-devel
@@ -97,9 +98,8 @@ Header files needed to build applications against libinstpatch.
 %setup -q -n %{name}-%{version}
 
 %build
-#autogen necessary to avoid unlinked cmath lib
-./autogen.sh
-%configure --enable-static=no
+#add unlinked cmath lib, autoreconf doesn't work
+%configure2_5x --enable-static=no LIBS="-lm" 
 %make
 
 %install
