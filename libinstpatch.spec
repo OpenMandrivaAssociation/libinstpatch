@@ -19,6 +19,7 @@ BuildRequires:  glib2-devel
 BuildRequires:  intltool
 BuildRequires:  python-gobject-devel
 BuildRequires:  python-devel
+BuildRequires:  pygtk-devel
 BuildRequires:  sndfile-devel
 BuildRequires:  gtk-doc
 Requires:       python
