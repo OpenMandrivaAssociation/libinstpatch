@@ -44,6 +44,7 @@ an object framework (based on GObject) to load patch files into,
 which can then be edited, converted, compressed and saved.
 
 %files -n instpatch
+%defattr(-,root,root,-)
 %{_bindir}/riff_dump
 %{python_sitelib}/ipatchmodule.*
 %{_datadir}/pygtk/2.0/defs/ipatch*.defs
