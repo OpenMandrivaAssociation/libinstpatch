@@ -1,6 +1,6 @@
 %define name    libinstpatch
 %define version 1.0.0
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define lib_major       0
 %define lib_name        %mklibname instpatch %{lib_major} 
@@ -18,7 +18,7 @@ Group:          System/Libraries
 BuildRequires:  glib2-devel
 BuildRequires:  intltool
 BuildRequires:  python-gobject-devel
-BuildRequires:  python-devel
+#BuildRequires:  python-devel
 BuildRequires:  pygtk2.0-devel
 BuildRequires:  sndfile-devel
 BuildRequires:  gtk-doc
