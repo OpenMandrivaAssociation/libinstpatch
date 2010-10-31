@@ -15,6 +15,7 @@ Source0:        http://prdownloads.sourceforge.net/swami/%{name}-%{version}.tar.
 License:        LGPL
 Group:          System/Libraries
 
+BuildRequires:  python-gobject-devel
 BuildRequires:  python-devel
 BuildRequires:  sndfile-devel
 BuildRequires:  gtk-doc
