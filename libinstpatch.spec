@@ -17,6 +17,7 @@ Group:          System/Libraries
 
 BuildRequires:  python-devel
 BuildRequires:  sndfile-devel
+BuildRequires:  gtk-doc
 Requires:       python
 Requires:       pygtk2.0
 BuildRoot:      %_tmppath/%{name}-root
