@@ -12,8 +12,8 @@ Version:        %{version}
 Release:        %{release}
 URL:            http://swami.sourceforge.net
 Source0:        http://prdownloads.sourceforge.net/swami/%{name}-%{version}.tar.gz
-License:        LGPLv2
-Group:          Development/Libraries
+License:        LGPL
+Group:          System/Libraries
 
 BuildRequires:  python-devel
 BuildRequires:  sndfile-devel
@@ -32,7 +32,7 @@ which can then be edited, converted, compressed and saved.
 %package -n instpatch
 
 Summary:        Utilities related to the libinstpatch library
-Group:          Development/Libraries
+Group:          System/Libraries
 Requires:       %{name} = %{version}
 
 %description -n instpatch
@@ -52,7 +52,7 @@ which can then be edited, converted, compressed and saved.
 %package -n %{lib_name}
 
 Summary:        Library for processing music instrument patch files
-Group:          Development/Libraries
+Group:          System/Libraries
 Requires:       python
 Requires:       pygtk2.0
 Requires:       instpatch = %{version}
@@ -73,7 +73,7 @@ which can then be edited, converted, compressed and saved.
 #-----------------------------------
 %package -n %{lib_name_devel}
 Summary:        Libinstpatch development headers
-Group:          Development/Libraries
+Group:          System/Libraries
 Requires:       %{name} = %{version}
 Provides:       instpatch-devel = %{version}-%{release}
 
