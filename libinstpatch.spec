@@ -1,14 +1,14 @@
 %define name    libinstpatch
 %define version 1.0.0
-%define release %mkrel 3
+%define release 1
 
 %define lib_major       0
-%define lib_name        %mklibname instpatch %{lib_major} 
+%define lib_name        %mklibname instpatch %{lib_major}
 %define lib_name_devel  %mklibname instpatch -d
 
-Name:           %{name} 
+Name:           %{name}
 Summary:        Library for processing Music Instrument patch files
-Version:        %{version} 
+Version:        %{version}
 Release:        %{release}
 URL:            http://swami.sourceforge.net
 Source0:        http://prdownloads.sourceforge.net/swami/%{name}-%{version}.tar.gz
@@ -92,7 +92,6 @@ Header files needed to build applications against libinstpatch.
 %dir %{_includedir}/%{name}-1.0/%{name}
 %{_includedir}/%{name}-1.0/%{name}/*.h
 %{_libdir}/%{name}-1.0.so
-%{_libdir}/%{name}-1.0.la
 %{_libdir}/pkgconfig/%{name}-1.0.pc
 
 #-----------------------------------
@@ -101,7 +100,7 @@ Header files needed to build applications against libinstpatch.
 
 %build
 #add unlinked cmath lib, autoreconf doesn't work
-%configure2_5x --enable-static=no LIBS="-lm" 
+LDFLAGS="-lm -lglib-2.0 -lgobject-2.0" %configure2_5x --enable-static=no
 %make
 
 %install
@@ -110,8 +109,26 @@ rm -rf %{buildroot}
 
 %ifarch x86_64
 install -d %{buildroot}%{python_sitelib}
-mv %{buildroot}%{_prefix}/%_lib/python%{python_version}/site-packages/* %{buildroot}%{python_sitelib}/ 
+mv %{buildroot}%{_prefix}/%_lib/python%{python_version}/site-packages/* %{buildroot}%{python_sitelib}/
 %endif
 
 %clean
 rm -rf %{buildroot}
+
+
+%changelog
+* Mon Nov 01 2010 Frank Kober <emuse@mandriva.org> 1.0.0-3mdv2011.0
++ Revision: 591481
+- add audiofile-devel BR to provide correct CFLAGS (tnx ahmad again :) )
+
+* Sun Oct 31 2010 Frank Kober <emuse@mandriva.org> 1.0.0-2mdv2011.0
++ Revision: 591246
++ rebuild (emptylog)
+
+* Sun Oct 31 2010 Frank Kober <emuse@mandriva.org> 1.0.0-1mdv2011.0
++ Revision: 590973
+- use different solution than autoreconf
+- fix license, fix group
+- fix python site-package path
+- import libinstpatch
+
