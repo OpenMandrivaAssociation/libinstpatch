@@ -3,7 +3,8 @@
 %define release 1
 
 %define lib_major       0
-%define lib_name        %mklibname instpatch %{lib_major}
+%define lib_api 1.0
+%define lib_name        %mklibname instpatch %{lib_api} %{lib_major}
 %define lib_name_devel  %mklibname instpatch -d
 
 Name:           %{name}
@@ -15,7 +16,7 @@ Source0:        http://prdownloads.sourceforge.net/swami/%{name}-%{version}.tar.
 License:        LGPL
 Group:          System/Libraries
 
-BuildRequires:  glib2-devel
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  intltool
 BuildRequires:  python-gobject-devel
 BuildRequires:  pygtk2.0-devel
