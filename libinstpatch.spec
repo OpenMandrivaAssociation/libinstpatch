@@ -1,6 +1,6 @@
 %define name    libinstpatch
 %define version 1.0.0
-%define release 1
+%define release 2
 
 %define lib_major       0
 %define lib_api 1.0
