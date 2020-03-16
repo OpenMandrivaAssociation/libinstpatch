@@ -40,7 +40,7 @@ which can then be edited, converted, compressed and saved.
 Summary:        Library for processing music instrument patch files
 Group:          System/Libraries
 ##Requires:       python
-Requires:       instpatch = %{version}
+#Requires:       instpatch = %{version}
 Provides:       %{name} = %{version}-%{release}
 
 %description -n %{lib_name}
