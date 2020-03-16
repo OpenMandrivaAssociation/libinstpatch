@@ -19,13 +19,11 @@ Group:          System/Libraries
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  intltool
 BuildRequires:  python-gobject3-devel
-BuildRequires:  pygtk2.0-devel
 BuildRequires:  sndfile-devel
 BuildRequires:  audiofile-devel
 BuildRequires:  gtk-doc
 BuildRequires:	cmake
 #Requires:       python
-Requires:       pygtk2.0
 
 BuildRoot:      %_tmppath/%{name}-root
 
@@ -42,7 +40,6 @@ which can then be edited, converted, compressed and saved.
 Summary:        Library for processing music instrument patch files
 Group:          System/Libraries
 ##Requires:       python
-Requires:       pygtk2.0
 Requires:       instpatch = %{version}
 Provides:       %{name} = %{version}-%{release}
 
