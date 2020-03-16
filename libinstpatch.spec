@@ -1,9 +1,9 @@
 %define name    libinstpatch
-%define version 1.0.0
-%define release 2
+%define version 1.1.2
+%define release 1
 
-%define lib_major       0
-%define lib_api 1.0
+%define lib_major 0
+%define lib_api 1.1
 %define lib_name        %mklibname instpatch %{lib_api} %{lib_major}
 %define lib_name_devel  %mklibname instpatch -d
 
@@ -18,13 +18,15 @@ Group:          System/Libraries
 
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  intltool
-BuildRequires:  python-gobject-devel
+BuildRequires:  python-gobject3-devel
 BuildRequires:  pygtk2.0-devel
 BuildRequires:  sndfile-devel
 BuildRequires:  audiofile-devel
 BuildRequires:  gtk-doc
-Requires:       python
+BuildRequires:	cmake
+#Requires:       python
 Requires:       pygtk2.0
+
 BuildRoot:      %_tmppath/%{name}-root
 
 %description
@@ -35,32 +37,11 @@ an object framework (based on GObject) to load patch files into,
 which can then be edited, converted, compressed and saved.
 
 #-----------------------------------
-%package -n instpatch
-
-Summary:        Utilities related to the libinstpatch library
-Group:          System/Libraries
-Requires:       %{name} = %{version}
-
-%description -n instpatch
-Utilities related to the libinstpatch library. LibInstPatch contains
-tools for processing digital sample based MIDI instrument "patch" files.
-The types of files libInstPatch supports are used for creating
-instrument sounds for wavetable synthesis. libInstPatch provides
-an object framework (based on GObject) to load patch files into,
-which can then be edited, converted, compressed and saved.
-
-%files -n instpatch
-%defattr(-,root,root,-)
-%{_bindir}/riff_dump
-%{python_sitelib}/ipatchmodule.*
-%{_datadir}/pygtk/2.0/defs/ipatch*.defs
-
-#-----------------------------------
 %package -n %{lib_name}
 
 Summary:        Library for processing music instrument patch files
 Group:          System/Libraries
-Requires:       python
+##Requires:       python
 Requires:       pygtk2.0
 Requires:       instpatch = %{version}
 Provides:       %{name} = %{version}-%{release}
@@ -74,7 +55,7 @@ which can then be edited, converted, compressed and saved.
 
 %files -n %{lib_name}
 %defattr(-,root,root,-)
-%doc AUTHORS README
+%doc AUTHORS 
 %{_libdir}/%{name}-1.0.so.*
 
 #-----------------------------------
@@ -89,9 +70,9 @@ Header files needed to build applications against libinstpatch.
 
 %files -n %{lib_name_devel}
 %defattr(-,root,root,-)
-%doc %{_datadir}/gtk-doc/html/%{name}
-%dir %{_includedir}/%{name}-1.0/%{name}
-%{_includedir}/%{name}-1.0/%{name}/*.h
+#%doc %{_datadir}/gtk-doc/html/%{name}
+%dir %{_includedir}/%{name}-2/%{name}
+%{_includedir}/%{name}-2/%{name}/*.h
 %{_libdir}/%{name}-1.0.so
 %{_libdir}/pkgconfig/%{name}-1.0.pc
 
@@ -100,18 +81,19 @@ Header files needed to build applications against libinstpatch.
 %setup -q -n %{name}-%{version}
 
 %build
-#add unlinked cmath lib, autoreconf doesn't work
-LDFLAGS="-lm -lglib-2.0 -lgobject-2.0" %configure2_5x --enable-static=no
-%make
+
+%cmake
+
+%make_build
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std
+%make_install -C build
 
-%ifarch x86_64
-install -d %{buildroot}%{python_sitelib}
-mv %{buildroot}%{_prefix}/%_lib/python%{python_version}/site-packages/* %{buildroot}%{python_sitelib}/
-%endif
+#%ifarch x86_64
+#install -d %{buildroot}%{python_sitelib}
+#mv %{buildroot}%{_prefix}/%_lib/python%{python_version}/site-packages/* %{buildroot}%{python_sitelib}/
+#%endif
 
 %clean
 rm -rf %{buildroot}
