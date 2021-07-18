@@ -1,16 +1,12 @@
-%define name    libinstpatch
-%define version 1.1.2
-%define release 1
-
 %define lib_major 0
 %define lib_api 1.1
 %define lib_name        %mklibname instpatch %{lib_api} %{lib_major}
 %define lib_name_devel  %mklibname instpatch -d
 
-Name:           %{name}
+Name:           libinstpatch
 Summary:        Library for processing Music Instrument patch files
-Version:        %{version}
-Release:        %{release}
+Version:        1.1.6
+Release:        1
 URL:            http://swami.sourceforge.net
 Source0:        http://prdownloads.sourceforge.net/swami/%{name}-%{version}.tar.gz
 License:        LGPL
@@ -78,7 +74,6 @@ Header files needed to build applications against libinstpatch.
 %setup -q -n %{name}-%{version}
 
 %build
-
 %cmake
 
 %make_build
