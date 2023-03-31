@@ -6,7 +6,7 @@
 Name:           libinstpatch
 Summary:        Library for processing Music Instrument patch files
 Version:        1.1.6
-Release:        1
+Release:        2
 URL:            http://swami.sourceforge.net
 Source0:        http://prdownloads.sourceforge.net/swami/%{name}-%{version}.tar.gz
 License:        LGPL
